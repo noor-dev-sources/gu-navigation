@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GU-Nav</title>
+</head>
+<body>
+
+<h1>GU-Nav</h1>
+<p>Select your problem to know which Gauhati University office to contact.</p>
+
+<select id="problem">
+  <option value="">-- Select Problem --</option>
+  <option value="exam">Exam Result / Evaluation Issue</option>
+  <option value="scholarship">Scholarship / Welfare Query</option>
+  <option value="hostel">Hostel Admission / Issues</option>
+  <option value="admin">Administrative / Registration Issue</option>
+  <option value="certificates">Certificates / Documents</option>
+</select>
+
+<br><br>
+
+<button onclick="getHelp()">Get Guidance</button>
+
+<p id="result"></p>
+
+<script>
+function getHelp() {
+  var problem = document.getElementById("problem").value;
+  var result = document.getElementById("result");
+
+  if (problem === "exam") {
+    result.innerHTML = "<b>Contact:</b> Controller of Examinations (COE), Gauhati University.<br>" +
+                       "Handles all examination-related queries and results. Email: coe@gauhati.ac.in"; 
+  } 
+  else if (problem === "scholarship") {
+    result.innerHTML = "<b>Contact:</b> Director of Students’ Welfare (DSW), Gauhati University.<br>" +
+                       "Handles scholarships, student welfare, concessions, ID cards."; 
+  }
+  else if (problem === "hostel") {
+    result.innerHTML = "<b>Contact:</b> Secretary, University Classes, Gauhati University.<br>" +
+                       "Responsible for hostel admissions and related administration.";
+  }
+  else if (problem === "admin") {
+    result.innerHTML = "<b>Contact:</b> Registrar / Deputy Registrar (Admin), Gauhati University.<br>" +
+                       "For general administration, registration, RTI and administrative matters.";
+  }
+  else if (problem === "certificates") {
+    result.innerHTML = "<b>Contact:</b> Registrar’s Establishment / University Classes, Gauhati University.<br>" +
+                       "For certificates, migrations, and official documentation.";
+  }
+  else {
+    result.innerHTML = "Please select a problem.";
+  }
+}
+</script>
+
+</body>
+</html>
+
