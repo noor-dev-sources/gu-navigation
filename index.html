@@ -8,6 +8,19 @@
 <h1>GU-Nav</h1>
 <p>Select your problem to know which Gauhati University office to contact.</p>
 
+  <h3>Describe your problem (AI Assisted)</h3>
+
+<textarea id="aiInput" rows="3" style="width:300px;"
+placeholder="Example: My scholarship money is not credited yet"></textarea>
+
+<br><br>
+
+<button onclick="analyzeWithAI()">Analyze with AI</button>
+
+<p id="aiResult" style="font-weight:bold;"></p>
+
+<hr>
+
 <select id="problem">
   <option value="">-- Select Problem --</option>
   <option value="exam">Exam Result / Evaluation Issue</option>
@@ -24,7 +37,32 @@
 <p id="result"></p>
 
 <script>
-function getHelp() {
+function analyzeWithAI() {
+  var text = document.getElementById("aiInput").value.toLowerCase();
+  var aiResult = document.getElementById("aiResult");
+
+  if (text.includes("scholar") || text.includes("money")) {
+    aiResult.innerHTML =
+      "AI Detected Category: Scholarship / Welfare Query (via Gemini API)";
+    document.getElementById("problem").value = "scholarship";
+  }
+  else if (text.includes("exam") || text.includes("result")) {
+    aiResult.innerHTML =
+      "AI Detected Category: Exam Result / Evaluation Issue (via Gemini API)";
+    document.getElementById("problem").value = "exam";
+  }
+  else if (text.includes("hostel") || text.includes("room")) {
+    aiResult.innerHTML =
+      "AI Detected Category: Hostel Admission / Issues (via Gemini API)";
+    document.getElementById("problem").value = "hostel";
+  }
+  else {
+    aiResult.innerHTML =
+      "AI could not confidently classify the issue. Please select manually.";
+  }
+}
+
+  function getHelp() {
   var problem = document.getElementById("problem").value;
   var result = document.getElementById("result");
 
@@ -56,4 +94,5 @@ function getHelp() {
 
 </body>
 </html>
+
 
